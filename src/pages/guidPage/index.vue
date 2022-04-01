@@ -1,8 +1,12 @@
 <script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import Inside1 from './inside1.vue';
 import bgImg from '@/assets/imgs/init-screen.png';
 export default {
+  components: {
+    Inside1,
+  },
   setup(){
     const router = useRouter();
     const next = (values) => {
@@ -23,16 +27,24 @@ export default {
 }
 </script>
 <template>
-<div class="box" @click="next">
-  <van-image
-    width="100vw"
-    height="100vh"
-    fit="contain"
-    :src="bgImg"
-  />
+<div class="box">
+  <van-swipe class="my-swipe" indicator-color="white">
+    <van-swipe-item>
+      <Inside1/>
+    </van-swipe-item>
+    <van-swipe-item>2</van-swipe-item>
+    <van-swipe-item>3</van-swipe-item>
+  </van-swipe>
   <!-- <nut-range v-model="value" @change="onChange"></nut-range> -->
 </div>
 </template>
-<style lang="less" scoped>
-
+<style lang="scss" scoped>
+.box {
+  
+  width: 100vw;
+  background-color: #2448A2;
+}
+.my-swipe {
+  height: 100vh;;
+}
 </style>

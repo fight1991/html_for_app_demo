@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@nutui/nutui": "^3.1.16",
     "axios": "^0.21.4",
     "element-plus": "^1.1.0-beta.17",
     "vant": "^3.4.5",

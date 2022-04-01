@@ -10,8 +10,26 @@ export default defineConfig({
     vue(),
     styleImport({
       resolves: [VantResolve()],
+      libs: [
+        {
+          libraryName: '@nutui/nutui',
+          libraryNameChangeCase: 'pascalCase',
+          resolveStyle: (name) => {
+            return `@nutui/nutui/dist/packages/${name}/index.scss`
+          }
+        }
+      ],
     }),
+    
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // 配置 nutui 全局 scss 变量
+        additionalData: `@import "./src/style/custom_theme.scss";@import "@nutui/nutui/dist/styles/variables.scss";`
+      }
+    }
+  },
   server: {
     open: true,
     host: '0.0.0.0'

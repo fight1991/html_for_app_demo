@@ -27,9 +27,17 @@ import {
   Tab,
   Tabs,
   SwipeCell,
+  Image as VanImage,
+  Swipe, SwipeItem,
   Icon } from 'vant';
+import { Range } from '@nutui/nutui';
+  
 const app = createApp(App);
 app
+  .use(Range)
+  .use(VanImage)
+  .use(Swipe)
+  .use(SwipeItem)
   .use(ConfigProvider)
   .use(DatetimePicker)
   .use(RadioGroup)
