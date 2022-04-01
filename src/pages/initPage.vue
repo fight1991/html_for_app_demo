@@ -30,7 +30,6 @@ export default {
     fit="contain"
     :src="bgImg"
   />
-  <!-- <nut-range v-model="value" @change="onChange"></nut-range> -->
 </div>
 </template>
 <style lang="less" scoped>

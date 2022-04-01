@@ -5,7 +5,7 @@ export default {
   setup(props, { emit }){
     const router = useRouter();
     const next = (values) => {
-      emit('changePage', 1)
+      emit('changePage', 3)
     };
     
     const value = ref(40);
