@@ -1,7 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router";
-import fullRoutes from "./fullRoutes";
+const InitPage = () => import(/* webpackChunkName: "init" */ '@/pages/initPage');
 const routes = [
-  ...fullRoutes
+  {
+    path: '/',
+    component: InitPage 
+  }
 ];
 
 const router = createRouter({
