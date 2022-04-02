@@ -1,0 +1,24 @@
+<script>
+import { reactive, ref, toRefs } from 'vue';
+import { useRouter } from 'vue-router';
+export default {
+   setup(props, { emit }){
+    const router = useRouter();
+
+    // 下一页
+    const next = (values) => {
+      router.push('/account')
+    };
+
+    return {
+      next,
+    };
+  }
+}
+</script>
+<template>
+  <div class="box"></div>
+</template>
+<style lang="scss" scoped>
+  
+</style>

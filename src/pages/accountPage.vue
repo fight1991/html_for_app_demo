@@ -1,17 +1,15 @@
 <script>
 import { reactive, ref, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
-import GaodeMap from '@/pages/components/GaodeMap';
 export default {
   components: {
-    GaodeMap,
   },
   setup(props, { emit }){
     const router = useRouter();
 
     // 下一页
     const next = (values) => {
-      router.push('/account')
+      router.push('/main')
     };
 
     return {
@@ -22,17 +20,7 @@ export default {
 </script>
 <template>
 <div class="box">
-  <div class="map">
-    <!-- <img src="@/assets/imgs/" alt=""> -->
-    <GaodeMap/>
-  </div>
-  <div class="location-title">Find your location</div>
-  <div class="location-detail">
-    <div class="location-left">
-      <img src="@/assets/imgs/Location.png" alt="">
-    </div>
-    <div class="location-right">Fenghuang garden road 65</div>
-  </div>
+  
   <div class="buttons">
     <div class="button-left">Skip</div>
     <div class="button-right" @click="next">

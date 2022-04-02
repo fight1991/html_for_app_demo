@@ -3,6 +3,8 @@ const InitPage = () => import(/* webpackChunkName: "init" */ '@/pages/initPage')
 const GuidPage = () => import(/* webpackChunkName: "guid" */ '@/pages/guidPage');
 const HollandPage = () => import(/* webpackChunkName: "holland" */ '@/pages/hollandPage');
 const LocationPage = () => import(/* webpackChunkName: "location" */ '@/pages/locationPage');
+const AccountPage = () => import(/* webpackChunkName: "accountPage" */ '@/pages/accountPage');
+
 
 const routes = [
   {
@@ -24,6 +26,11 @@ const routes = [
     path: '/location',
     name: 'location',
     component: LocationPage 
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: AccountPage 
   }
 ];
 
