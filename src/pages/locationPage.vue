@@ -1,14 +1,11 @@
 <script>
 import { reactive, ref, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
-import GaodeMap from '@/pages/components/GaodeMap';
+import useInitMap from '@/plugin/useInitMap';
 export default {
-  components: {
-    GaodeMap,
-  },
   setup(props, { emit }){
     const router = useRouter();
-
+    let { map } = useInitMap({ domId: 'gaode-map', center: [39.98412, 116.307484] });
     // 下一页
     const next = (values) => {
       router.push('/account')
@@ -20,11 +17,11 @@ export default {
   }
 }
 </script>
+
 <template>
 <div class="box">
   <div class="map">
-    <!-- <img src="@/assets/imgs/" alt=""> -->
-    <GaodeMap/>
+    <div id="gaode-map"></div>
   </div>
   <div class="location-title">Find your location</div>
   <div class="location-detail">
@@ -62,6 +59,10 @@ export default {
   border-radius: 14px;
   overflow: hidden;
   margin-top: 20px;
+}
+#gaode-map {
+  width: 100%;
+  height: 100%;
 }
 .location-title {
   font-size: 24px;

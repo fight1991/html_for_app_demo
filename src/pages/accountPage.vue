@@ -20,7 +20,20 @@ export default {
 </script>
 <template>
 <div class="box">
-  
+  <div class="icon">
+    <img src="@/assets/imgs/Profile-Notifications-1-logo.png" alt="">
+  </div>
+  <div class="text">
+    Sign up with an account to get the suitable jobs.
+  </div>
+  <div class="input-group">
+    <div class="input-title">Disable ID</div>
+    <div class="input-box"></div>
+    <div class="input-title">Account name</div>
+    <div class="input-box"></div>
+    <div class="input-title">Password</div>
+    <div class="input-box"></div>
+  </div>
   <div class="buttons">
     <div class="button-left">Skip</div>
     <div class="button-right" @click="next">
@@ -34,7 +47,7 @@ export default {
 .box {
   transition: all .8s;
   height: 100vh;
-
+  color: #3762cc;
   background-color: #fafafa;
   display: flex;
   overflow: hidden;
@@ -42,47 +55,41 @@ export default {
   align-items: center;
   
 }
-.map {
-  width: 80%;
-  flex: 1;
-  background: rgba(0,0,0,0.00);
-  border: 3px solid #3762cc;
-  border-radius: 14px;
-  overflow: hidden;
-  margin-top: 20px;
-}
-.location-title {
-  font-size: 24px;
-  height: 34px;
-  padding: 15px 0;
+.text {
+  width: 315px;
+  height: 153px;
+  font-size: 35px;
+  text-align: center;
   color: #3762cc;
-  letter-spacing: 0.67px;
+  letter-spacing: 0.97px;
 }
-.location-detail {
-  display: flex;
-  align-items: center;
+.input-group {
   width: 80%;
-  box-sizing: border-box;
-  padding-left: 15px;
-  height: 66px;
-  background: #E9F0FA;
-  border-radius: 13px;
-  font-size: 16px;
-  color: #3762cc;
-  border-radius: 13px;
+  .input-title {
+    height: 21px;
+    padding-left: 10px;
+    font-size: 16px;
+    text-align: left;
+  }
+  .input-box {
+    height: 61px;
+    opacity: 0.12;
+    background: #c3cfe2;
+    border-radius: 13px;
+  }
 }
-.location-left {
-  width: 18px;
-  margin-right: 15px;
-}
-.location-right {
+.icon {
+  width: 50px;
+  padding: 30px 20px;
+  align-self: flex-start;
 }
 .buttons {
     display: flex;
+    flex: 1;
     justify-content: space-between;
+    align-items: flex-end;
     margin:20px 0 30px;
     width: 80%;
-
     .button-right {
       display: flex;
       justify-content: flex-end;
