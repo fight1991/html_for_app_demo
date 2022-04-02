@@ -4,12 +4,14 @@ import { useRouter } from 'vue-router';
 import Inside1 from './inside1.vue';
 import Inside2 from './inside2.vue';
 import Inside3 from './inside3.vue';
+import Inside4 from './inside4.vue';
 import bgImg from '@/assets/imgs/init-screen.png';
 export default {
   components: {
     Inside1,
     Inside2,
-    Inside3
+    Inside3,
+    Inside4
   },
   setup(){
     const router = useRouter();
@@ -49,7 +51,7 @@ export default {
       <Inside3 @changePage="changePage"/>
     </van-swipe-item>
     <van-swipe-item>
-      第4页
+      <Inside4 @changePage="changePage"/>
     </van-swipe-item>
   </van-swipe>
   <!-- <nut-range v-model="value" @change="onChange"></nut-range> -->

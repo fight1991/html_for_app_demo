@@ -224,19 +224,4 @@ export default {
     width: 34px;
   }
 }
-.black-style {
-  color: #fafafa;
-}
-.button {
-  width: 224px;
-  height: 61px;
-  background: #f0f5fe;
-  color: #3762cc;
-  font-size: 20px;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-}
 </style>
