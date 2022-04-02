@@ -4,18 +4,30 @@ import { useRouter } from 'vue-router';
 export default {
   setup(props, { emit }){
     const router = useRouter();
+    
+    const activeImg = ref(false);
+    const value = ref(40);
+    const onChange = (value) => {
+      console.log(value)
+    }
+    const switchActive = () => {
+      activeImg.value = !activeImg.value;
+    }
+    // 返回
+    const prevBtn = () => {
+      emit('changePage', 0)
+    }
+    // 下一页
     const next = (values) => {
       emit('changePage', 2)
     };
-    
-    const value = ref(40);
-    const onChange = (value) => {
-
-    }
     return {
       value,
       next,
-      onChange
+      prevBtn,
+      activeImg,
+      onChange,
+      switchActive
     };
   }
 }
@@ -37,20 +49,33 @@ export default {
         <div class="little-t">T</div>
         <nut-range
           v-model="value"
-          inactive-color="#FFEA92"
+          inactive-color="rgb(255, 240, 182)"
           active-color="#FFEA92"
           :hidden-tag="true"
           :hidden-range="true"
           @change="onChange">
+          <template #button>
+            <div class="custom-button">
+              <img src="@/assets/imgs/splash-6-circle.png" alt="">
+            </div>
+          </template>
         </nut-range>
         <div class="big-t">T</div>
       </div>
       <div class="switch-box">
+        <div :class="{'switch-btn': true, 'switch-direction': activeImg}" @click="switchActive">
+          <img v-if="!activeImg" style="width:43px" src="@/assets/imgs/splash-6-circle.png" alt="">
+          <img v-else style="width:43px" src="@/assets/imgs/splash-8-circle.png" alt="">
 
+        </div>
+        <div class="switch-text">Colour Blindness</div>
       </div>
       <div class="buttons">
-        <div class="button-left">Back</div>
-        <div class="button-right"></div>
+        <div class="button-left" @click="prevBtn">Back</div>
+        <div class="button-right" @click="next">
+          <img src="@/assets/imgs/splash-6-Path.png" alt="">
+          <!-- <img src="@/assets/imgs/splash-8-Path.png" alt=""> -->
+        </div>
       </div>
     </div>
   </div>
@@ -59,6 +84,10 @@ export default {
 </div>
 </template>
 <style lang="scss" scoped>
+.custom-button {
+  padding-top: 5px;
+  width: 43px;
+}
 .bottom {
   border-radius: 45px 45px 0 0;
   background-color: $primary-color;
@@ -75,6 +104,26 @@ export default {
   text-align: center;
   color: #fafafa;
   letter-spacing: 0.97px;
+}
+.switch-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FAFAFA;
+  font-size: 20px;
+  font-weight: 700;
+  .switch-btn {
+    width: 75px;
+    height: 36px;
+    margin-right: 16px;
+    border-radius: 18px;
+    background-color: #D6DCE5;
+  }
+  .switch-direction {
+    img {
+      float: right;
+    }
+  }
 }
 .text-content {
   .title {
@@ -94,6 +143,12 @@ export default {
     letter-spacing: 0.75px;
   }
 }
+.group-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 .slide-box {
   display: flex;
   width: 90vw;
@@ -102,12 +157,46 @@ export default {
   align-items: center;
   .little-t {
     font-size: 35px;
-    padding: 0 5px;
+    padding: 0 15px;
   }
   .big-t {
     font-size: 80px;
-    padding: 0 5px;
+    padding: 0 15px 0 10px;
   }
+}
+.buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin:30px 0;
+}
+.button-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 175px;
+  height: 61px;
+  padding-right: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: #EAA97D;
+}
+.button-left {
+  width: 100px;
+  height: 61px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background-color: #F0F5FE;
+  color: #3762cc;
+  font-weight: 700;
+  img {
+    width: 34px;
+  }
+}
+.black-style {
+  color: #fafafa;
 }
 .button {
   width: 224px;
