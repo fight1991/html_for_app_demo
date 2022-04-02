@@ -37,7 +37,7 @@ export default {
 }
 </script>
 <template>
-<div class="box">
+<div class="outer">
   <van-swipe class="my-swipe" :touchable="false" indicator-color="white" ref="vanSwipe">
     <van-swipe-item>
       <Inside1 @changePage="changePage"/>
@@ -56,7 +56,7 @@ export default {
 </div>
 </template>
 <style lang="scss" scoped>
-.box {
+.outer {
   
   width: 100vw;
   background-color: #2448A2;
