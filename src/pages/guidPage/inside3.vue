@@ -9,9 +9,9 @@ export default {
     const prevBtn = () => {
       emit('changePage', 1)
     }
-    // 下一页
+    // 跳转下一页面
     const next = (values) => {
-      emit('changePage', 3)
+      router.push('/holland');
     };
     return {
       next,

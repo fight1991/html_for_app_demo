@@ -7,11 +7,11 @@ export default {
 
     // 返回
     const prevBtn = () => {
-      emit('changePage', 2)
-    }
-    // 下一页
+      router.go(-1);
+    } 
+    // 页面跳转
     const next = (values) => {
-      emit('changePage', 3)
+      router.push('/location');
     };
     const list = ref([
       {
@@ -69,6 +69,8 @@ export default {
 <style lang="scss" scoped>
 .box {
   transition: all .8s;
+  height: 100vh;
+  background-color: $primary-color;
 }
 
 .bottom {
