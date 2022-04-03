@@ -19,18 +19,24 @@ export default {
 </script>
 <template>
   <div class="box">
-    <div class="content"></div>
+    <div class="content">
+      <router-view/>
+    </div>
     <div class="nav-bottom">
+      <div class="middile">
+        <img src="@/assets/imgs/home-1-search.png" alt="">
+      </div>
       <div :class="{'tab': true, 'active': currentTab === 0}">
         <i class="iconfont icon-home"></i>
       </div>
-       <div :class="{'tab': true, 'active': currentTab === 1}">
+      <div :class="{'tab': true, 'active': currentTab === 1}">
         <i class="iconfont icon-work"></i>
       </div>
-       <div :class="{'tab': true, 'active': currentTab === 2}">
+      <div class="tab"></div>
+      <div :class="{'tab': true, 'active': currentTab === 2}">
         <i class="iconfont icon-message"></i>
       </div>
-       <div :class="{'tab': true, 'active': currentTab === 3}">
+      <div :class="{'tab': true, 'active': currentTab === 3}">
         <i class="iconfont icon-mine"></i>
       </div>
     </div>
@@ -39,6 +45,10 @@ export default {
 <style lang="scss" scoped>
   .box {
     padding-bottom: 70px;
+  }
+  .content {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
   }
   .iconfont {
     font-size: 26px;
@@ -57,7 +67,18 @@ export default {
     width: 100vw;
     background: #3762cc;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    align-items: stretch;
+    .tab {
+      flex: 1;
+      text-align: center;
+      line-height: 70px;
+    }
+  }
+  .middile {
+    position: absolute;
+    left: 50%;
+    width: 77px;
+    transform: translate(-50%, -50%);
+    top: 0;
   }
 </style>

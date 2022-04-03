@@ -5,6 +5,10 @@ const HollandPage = () => import(/* webpackChunkName: "holland" */ '@/pages/holl
 const LocationPage = () => import(/* webpackChunkName: "location" */ '@/pages/locationPage');
 const AccountPage = () => import(/* webpackChunkName: "accountPage" */ '@/pages/accountPage');
 const MainPage = () => import(/* webpackChunkName: "mainPage" */ '@/pages/mainPage');
+const HomePage = () => import(/* webpackChunkName: "mainHomePage" */ '@/pages/bottomNavPages/home');
+const WorkPage = () => import(/* webpackChunkName: "mainWorkPage" */ '@/pages/bottomNavPages/work');
+const MessagePage = () => import(/* webpackChunkName: "mainMessagePage" */ '@/pages/bottomNavPages/message');
+const MinePage = () => import(/* webpackChunkName: "mainMinePage" */ '@/pages/bottomNavPages/mine');
 
 
 const routes = [
@@ -36,7 +40,24 @@ const routes = [
   {
     path: '/main',
     name: 'main',
-    component: MainPage 
+    component: MainPage,
+    children: [{
+      name: 'main-home',
+      path: '/main/home',
+      component: HomePage
+    }, {
+      name: 'main-work',
+      path: '/main/work',
+      component: WorkPage
+    }, {
+      name: 'main-message',
+      path: '/main/message',
+      component: MessagePage
+    }, {
+      name: 'main-mine',
+      path: '/main/mine',
+      component: MinePage
+    }]
   }
 ];
 

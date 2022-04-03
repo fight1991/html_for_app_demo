@@ -9,7 +9,7 @@ export default {
 
     // 下一页
     const next = (values) => {
-      router.push('/main')
+      router.push('/main/home')
     };
 
     return {
