@@ -5,14 +5,16 @@ export default {
    setup(props, { emit }){
     const router = useRouter();
     const currentTab = ref(0);
+    const pages = ['home', 'work', 'message', 'mine']
     // 下一页
-    const next = (values) => {
-      router.push('/account')
+    const goPage = (index) => {
+      let page = pages[index];
+      currentTab.value = index;
+      router.push(`/main/${page}`);
     };
-
     return {
-      next,
-      currentTab
+      currentTab,
+      goPage
     };
   }
 }
@@ -26,17 +28,17 @@ export default {
       <div class="middile">
         <img src="@/assets/imgs/home-1-search.png" alt="">
       </div>
-      <div :class="{'tab': true, 'active': currentTab === 0}">
+      <div :class="{'tab': true, 'active': currentTab === 0}" @click="goPage(0)">
         <i class="iconfont icon-home"></i>
       </div>
-      <div :class="{'tab': true, 'active': currentTab === 1}">
+      <div :class="{'tab': true, 'active': currentTab === 1}" @click="goPage(1)">
         <i class="iconfont icon-work"></i>
       </div>
       <div class="tab"></div>
-      <div :class="{'tab': true, 'active': currentTab === 2}">
+      <div :class="{'tab': true, 'active': currentTab === 2}" @click="goPage(2)">
         <i class="iconfont icon-message"></i>
       </div>
-      <div :class="{'tab': true, 'active': currentTab === 3}">
+      <div :class="{'tab': true, 'active': currentTab === 3}" @click="goPage(3)">
         <i class="iconfont icon-mine"></i>
       </div>
     </div>
@@ -49,14 +51,17 @@ export default {
   .content {
     height: calc(100vh - 70px);
     overflow-y: auto;
+    background-color: #fff;
   }
   .iconfont {
     font-size: 26px;
     color: #6399EF;
+    transition: all .4s;
   }
   .active {
     .iconfont {
       color: #fff;
+      font-size: 28px;
     }
   }
   .nav-bottom {
