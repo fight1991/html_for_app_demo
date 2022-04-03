@@ -5,7 +5,7 @@ export default {
    setup(props, { emit }){
     const router = useRouter();
     const currentTab = ref(0);
-    const pages = ['home', 'work', 'message', 'mine']
+    const pages = ['home', 'work', 'message', 'mine', 'maxview']
     // 下一页
     const goPage = (index) => {
       let page = pages[index];
@@ -25,7 +25,7 @@ export default {
       <router-view/>
     </div>
     <div class="nav-bottom">
-      <div class="middile">
+      <div class="middile" @click="goPage(4)">
         <img src="@/assets/imgs/home-1-search.png" alt="">
       </div>
       <div :class="{'tab': true, 'active': currentTab === 0}" @click="goPage(0)">
