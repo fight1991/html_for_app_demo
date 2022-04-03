@@ -2,6 +2,9 @@
 import { reactive, ref, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 import CardItem from './components/cardItem.vue';
+import wangyiImg from '@/assets/imgs/wangyi.png';
+import baiduImg from '@/assets/imgs/baidu.png';
+
 export default {
   components: {
     CardItem
@@ -12,23 +15,24 @@ export default {
     const next = (values) => {
     };
     const tabList = ['Design', 'Network', 'Brand', 'Development', 'Other', 'Other2']
+  
     const cardList = [
       {
         id: '111',
-        iconName: '',
-        title: '',
+        iconPath: wangyiImg,
+        title: 'Radio Presenter',
         subtitle: '',
         address: ''
       }, {
         id: '112',
-        iconName: '',
-        title: '',
+        iconPath: baiduImg,
+        title: 'Front-end programmer',
         subtitle: '',
         address: ''
       }, {
         id: '113',
-        iconName: '',
-        title: '',
+        iconPath: baiduImg,
+        title: 'Front-end programmer',
         subtitle: '',
         address: ''
       }
@@ -78,7 +82,7 @@ export default {
       <div class="warp-box" :style="{'width': '600%', 'transform':'translateX(-'+activeTab*100+'vw)'}">
         <div class="wrap" v-for="item in tabList" :key="'wrap' + item">
           <div v-for="item in cardList" :key="item.id" style="margin-bottom:15px">
-            <CardItem></CardItem>
+            <CardItem :data="item"></CardItem>
           </div>
         </div>
       </div>

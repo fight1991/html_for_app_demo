@@ -1,17 +1,19 @@
 <script>
 export default {
+  props: ['data'],
   setup(props){
+    console.log(props.data)
     return {
-
+      data: props.data
     }
   }
 }
 </script>
 <template>
   <div class="card">
-    <div class="left"><img src="@/assets/imgs/wangyi.png" alt=""></div>
+    <div class="left"><img :src="data.iconPath" alt=""></div>
     <div class="right">
-      <div class="one">Radio Presenter</div>
+      <div class="one">{{data.title}}</div>
       <div class="two">
         Full time - Remote
         <span>Nanjing</span>
