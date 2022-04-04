@@ -6,6 +6,10 @@ import { useRouter } from 'vue-router';
 export default {
   setup(props, { emit }){
     const router = useRouter();
+    // 返回
+    const prev = () => {
+      router.go(-1);
+    }
     // 下一页
     const next = (values) => {
       router.push('/more')
@@ -13,6 +17,7 @@ export default {
   
     return {
       next,
+      prev
     };
   }
 }
@@ -20,7 +25,7 @@ export default {
 <template>
   <div class="box">
     <div class="content-box">
-      <div class="back"><img src="@/assets/imgs/Slash-cart-detail–1-return.png" alt=""></div>
+      <div class="back" @click="prev"><img src="@/assets/imgs/Slash-cart-detail–1-return.png" alt=""></div>
       <div class="title">Google - Radio Poresenter</div>
       <div class="input-box">
         <div class="input-item">

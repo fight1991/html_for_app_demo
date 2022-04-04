@@ -1,9 +1,10 @@
 <script>
-import { reactive, ref, toRefs } from 'vue';
-import { useRouter } from 'vue-router';
+import { reactive, ref, toRefs, computed, onMounted, watch } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 export default {
    setup(props, { emit }){
     const router = useRouter();
+    const route = useRoute();
     const currentTab = ref(0);
     const pages = ['home', 'work', 'message', 'mine', 'maxview']
     // 下一页
@@ -12,9 +13,20 @@ export default {
       currentTab.value = index;
       router.push(`/main/${page}`);
     };
+    onMounted(() => {
+      console.log(route.name)
+    })
+    watch(
+      () => route.name,
+      (n, o) => {
+        let tag = route.name.split('-');
+        currentTab.value = pages.indexOf(tag[1]);
+        console.log('监听', route.name)
+      }
+    )
     return {
       currentTab,
-      goPage
+      goPage,
     };
   }
 }
@@ -22,7 +34,11 @@ export default {
 <template>
   <div class="box">
     <div class="content">
-      <router-view/>
+      <router-view v-slot="{Component}">
+        <keep-alive>
+          <component :is="Component"/>
+        </keep-alive>
+      </router-view>
     </div>
     <div class="nav-bottom">
       <div class="middile" @click="goPage(4)">

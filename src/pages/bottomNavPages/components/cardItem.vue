@@ -2,7 +2,6 @@
 export default {
   props: ['data'],
   setup(props){
-    console.log(props.data)
     return {
       data: props.data
     }
