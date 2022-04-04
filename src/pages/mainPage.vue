@@ -11,8 +11,21 @@ export default {
     const goPage = (index) => {
       let page = pages[index];
       currentTab.value = index;
+      isMax.value = false;
       router.push(`/main/${page}`);
     };
+    const isMax = ref(false);
+    const max = () => {
+      if (route.name === 'main-maxview') {
+        router.go(-1);
+        isMax.value = !isMax.value;
+      } else {
+        if (route.name === 'main-home') {
+          router.push('/main/maxview');
+          isMax.value = !isMax.value;
+        }
+      }
+    }
     onMounted(() => {
       console.log(route.name)
     })
@@ -27,6 +40,8 @@ export default {
     return {
       currentTab,
       goPage,
+      isMax,
+      max
     };
   }
 }
@@ -41,8 +56,11 @@ export default {
       </router-view>
     </div>
     <div class="nav-bottom">
-      <div class="middile" @click="goPage(4)">
+      <div :class="{'middile':true, 'middle-s':true, 'isMax': isMax}" @click="max">
         <img src="@/assets/imgs/home-1-search.png" alt="">
+      </div>
+      <div :class="{'middile':true, 'middle-m':true, 'isMax': !isMax}" @click="max">
+        <img src="@/assets/imgs/home-2-search.png" alt="">
       </div>
       <div :class="{'tab': true, 'active': currentTab === 0}" @click="goPage(0)">
         <i class="iconfont icon-home"></i>
@@ -98,8 +116,25 @@ export default {
   .middile {
     position: absolute;
     left: 50%;
-    width: 77px;
     transform: translate(-50%, -50%);
     top: 10px;
+    z-index: 1;
+    transition: all .5s;
+    transform-origin:center;
+
+  }
+  .middle-s {
+    width: 77px;
+    width: 77px;
+    z-index: 2;
+  }
+  .middle-m {
+    width: 107px;
+    height: 107px;
+  }
+  .isMax {
+    width: 0;
+    height: 0;
+    overflow: hidden;
   }
 </style>

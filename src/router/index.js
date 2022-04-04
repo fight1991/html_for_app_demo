@@ -14,6 +14,7 @@ const HomePage = () => import(/* webpackChunkName: "mainHomePage" */ '@/pages/bo
 const WorkPage = () => import(/* webpackChunkName: "mainWorkPage" */ '@/pages/bottomNavPages/work');
 const MessagePage = () => import(/* webpackChunkName: "mainMessagePage" */ '@/pages/bottomNavPages/message');
 const MinePage = () => import(/* webpackChunkName: "mainMinePage" */ '@/pages/bottomNavPages/mine');
+const MaxviewPage = () => import(/* webpackChunkName: "maxviewPage" */ '@/pages/bottomNavPages/maxview');
 
 
 const routes = [
@@ -69,6 +70,10 @@ const routes = [
       name: 'main-mine',
       path: '/main/mine',
       component: MinePage
+    }, {
+      name: 'main-maxview',
+      path: '/main/maxview',
+      component: MaxviewPage
     }]
   }
 ];

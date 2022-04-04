@@ -1,7 +1,11 @@
 <script>
+import { useRouter } from 'vue-router';
 export default {
   props: ['data'],
   setup(props){
+    const router = useRouter();
+    const next = () => {
+    }
     return {
       data: props.data
     }
