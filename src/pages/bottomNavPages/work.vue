@@ -2,8 +2,7 @@
 import { reactive, ref, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 import CardItem from './components/cardItem.vue';
-import wangyiImg from '@/assets/imgs/wangyi.png';
-import baiduImg from '@/assets/imgs/baidu.png';
+
 
 export default {
   components: {
@@ -13,6 +12,7 @@ export default {
     const router = useRouter();
     // 下一页
     const next = (values) => {
+      router.push('/more')
     };
     const tabList = ['Design', 'Network', 'Brand', 'Development', 'Other', 'Other2']
   
@@ -45,7 +45,7 @@ export default {
       <div class="text">Recommended trainings</div>
       <img src="@/assets/imgs/Project-full-time-cart–1-Filter.png" alt="">
     </div>
-    <div class="detail">
+    <div class="detail" v-for="index in 2" :key="index">
       <div class="one">NetEase</div>
       <div class="two">Radio Presenter training</div>
       <div class="little-map">
@@ -91,7 +91,7 @@ export default {
             </div>
           </div>
         </div>
-        <div class="button">More</div>
+        <div class="button" @click="next">More</div>
       </div>
     </div>
   </div>

@@ -100,6 +100,9 @@ export default {
       border-radius: 10px;
       box-sizing: border-box;
       background-color: #3762cc;
+      img {
+        width: 35px;
+      }
     }
     .button-left {
       width: 100px;

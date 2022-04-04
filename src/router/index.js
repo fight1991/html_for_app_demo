@@ -4,6 +4,7 @@ const GuidPage = () => import(/* webpackChunkName: "guid" */ '@/pages/guidPage')
 const HollandPage = () => import(/* webpackChunkName: "holland" */ '@/pages/hollandPage');
 const LocationPage = () => import(/* webpackChunkName: "location" */ '@/pages/locationPage');
 const AccountPage = () => import(/* webpackChunkName: "accountPage" */ '@/pages/accountPage');
+const MorePage = () => import(/* webpackChunkName: "morePage" */ '@/pages/morePage');
 const MainPage = () => import(/* webpackChunkName: "mainPage" */ '@/pages/mainPage');
 const HomePage = () => import(/* webpackChunkName: "mainHomePage" */ '@/pages/bottomNavPages/home');
 const WorkPage = () => import(/* webpackChunkName: "mainWorkPage" */ '@/pages/bottomNavPages/work');
@@ -16,28 +17,27 @@ const routes = [
     path: '/',
     name: 'index',
     component: InitPage 
-  },
-  {
+  }, {
     path: '/guid',
     name: 'guid',
     component: GuidPage 
-  },
-  {
+  }, {
     path: '/holland',
     name: 'holland',
     component: HollandPage 
-  },
-  {
+  }, {
     path: '/location',
     name: 'location',
     component: LocationPage 
-  },
-  {
+  }, {
     path: '/account',
     name: 'account',
     component: AccountPage 
-  },
-  {
+  }, {
+    path: '/more',
+    name: 'more',
+    component: MorePage 
+  }, {
     path: '/main',
     name: 'main',
     component: MainPage,

@@ -137,6 +137,7 @@ export default {
     height: 50px;
     box-sizing: border-box;
     display: flex;
+    align-self: flex-end;
     justify-content: center;
     align-items: center;
     font-size: 20px;
@@ -150,7 +151,6 @@ export default {
     justify-content: space-between;
     margin:20px 0 30px;
     width: 100%;
-
     .button-right {
       display: flex;
       justify-content: flex-end;
@@ -161,6 +161,9 @@ export default {
       border-radius: 10px;
       box-sizing: border-box;
       background-color: #EAA97D;
+      img {
+        width: 35px;
+      }
     }
     .button-left {
       width: 100px;
