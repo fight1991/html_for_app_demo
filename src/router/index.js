@@ -5,6 +5,10 @@ const HollandPage = () => import(/* webpackChunkName: "holland" */ '@/pages/holl
 const LocationPage = () => import(/* webpackChunkName: "location" */ '@/pages/locationPage');
 const AccountPage = () => import(/* webpackChunkName: "accountPage" */ '@/pages/accountPage');
 const MorePage = () => import(/* webpackChunkName: "morePage" */ '@/pages/morePage');
+const MaxDetailPage = () => import(/* webpackChunkName: "maxDetail" */ '@/pages/maxDetailPage');
+const ContactPage = () => import(/* webpackChunkName: "contactPage" */ '@/pages/contactPage');
+
+
 const MainPage = () => import(/* webpackChunkName: "mainPage" */ '@/pages/mainPage');
 const HomePage = () => import(/* webpackChunkName: "mainHomePage" */ '@/pages/bottomNavPages/home');
 const WorkPage = () => import(/* webpackChunkName: "mainWorkPage" */ '@/pages/bottomNavPages/work');
@@ -37,6 +41,14 @@ const routes = [
     path: '/more',
     name: 'more',
     component: MorePage 
+  }, {
+    path: '/maxDetail',
+    name: 'maxDetail',
+    component: MaxDetailPage 
+  }, {
+    path: '/contact',
+    name: 'contact',
+    component: ContactPage 
   }, {
     path: '/main',
     name: 'main',
