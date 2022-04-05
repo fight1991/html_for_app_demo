@@ -145,6 +145,7 @@ export default {
     justify-content: center;
     align-items: center;
     transition: all .5s ease;
+    z-index: 999;
   }
   .cancel-btn {
     background-color: #F05C5C;

@@ -9,6 +9,7 @@ export default {
     const pages = ['home', 'work', 'message', 'mine', 'maxview']
     // 下一页
     const goPage = (index) => {
+      if (index > 1) return;
       let page = pages[index];
       currentTab.value = index;
       isMax.value = false;
