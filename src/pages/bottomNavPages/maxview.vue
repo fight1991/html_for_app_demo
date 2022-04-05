@@ -8,8 +8,9 @@ export default {
     const next = (values) => {
       router.push('/maxDetail')
     };
+    let doms = [];
     const tabList = ['Design', 'Network', 'Brand'];
-    const maxList = ref(['a', 'b', 'c', 'd']);
+    const maxList = [0, 1, 2, 3];
     const activeTab = ref(1);
     const themeVars = {
       tabFontSize: '35px',
@@ -30,9 +31,11 @@ export default {
           isLeftShow.value = false;
           break;
         case 'bottom':
-          let first = maxList.value[0];
-          maxList.value.shift();
-          maxList.value.push(first);
+          let ele = maxList[maxList.length - 1];
+          maxList.pop();
+          maxList.unshift(ele);
+          console.log(maxList);
+          renderDom(doms);
           break;
         default:
           break;
@@ -48,16 +51,19 @@ export default {
     }
     const isLeftShow = ref(false);
     const isRightShow = ref(false);
-    onMounted(() => {
-      let doms = document.getElementsByClassName('swipe-item')
-      console.log(doms)
-      console.log(Array.isArray(doms))
-      Array.prototype.forEach.call(doms, (dom, index) => {
+    const renderDom = (doms) => {
+      Array.prototype.forEach.call(doms, (dom, i) => {
         // 最后一张位置不动, 缩放最小
+        let index = maxList[i];
         dom.style.transform = `scale(${1 - index*0.1}) translateY(${20*(doms.length - 1 - index)}px)`
         dom.style.transformOrigin = 'center top'
         dom.style.zIndex = doms.length - index;
       })
+    }
+    onMounted(() => {
+      doms = document.getElementsByClassName('swipe-item')
+      console.log(doms)
+      renderDom(doms)
     })
     return {
       themeVars,
@@ -84,7 +90,7 @@ export default {
     <div class="swipe">
       <div
         class="swipe-item"
-        v-for="item in maxList" :key="item">
+        v-for="item in maxList" :key="'index' + item">
         <div class="swipe-card">
           <div class="left"><img src="@/assets/imgs/wangyi.png" alt=""></div>
           <div class="right">
@@ -195,7 +201,7 @@ export default {
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 2px -2px 6px #3762cc;
-  transition: all 1s;
+  transition: all .5s ease-in-out;
   .swipe-card {
     height: 150px;
     margin: 0 auto;
