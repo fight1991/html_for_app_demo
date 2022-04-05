@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import Vue3TouchEvents from "vue3-touch-events";
 import './style/main';
 import './assets/fonts/iconfont.css';
 import {
@@ -62,4 +63,4 @@ app
   .use(SidebarItem)
   .use(CellGroup);
 
-app.use(router).use(store).mount('#app');
+app.use(router).use(store).use(Vue3TouchEvents).mount('#app');

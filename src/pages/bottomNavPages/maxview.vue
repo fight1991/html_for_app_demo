@@ -15,17 +15,49 @@ export default {
       tabLineHeight: '47px'
 
     };
+    // 左右滑动
+    const touchMove = (type) => {
+      console.log(type)
+      switch(type) {
+        case 'right':
+          isRightShow.value = false;
+          isLeftShow.value = true;
+          break;
+        case 'left':
+          isRightShow.value = true;
+          isLeftShow.value = false;
+          break;
+        default:
+          break;
+      }
+    }
+    const tap = () => {
+      if (isLeftShow.value) {
+        isLeftShow.value = false;
+      }
+      if (isRightShow.value){
+        isRightShow.value = false;
+      }
+    }
+    const isLeftShow = ref(false);
+    const isRightShow = ref(false);
+
     return {
       themeVars,
       next,
+      touchMove,
       tabList,
-      activeTab
+      tap,
+      activeTab,
+      isLeftShow,
+      isRightShow
     };
   }
 }
 </script>
 <template>
-  <div class="content-box">
+  <div class="content-box" v-touch:tap="tap" v-touch:swipe="touchMove">
+    
     <div class="top-arrow"><img src="@/assets/imgs/home-2-up.png" alt=""></div>
     <div class="tab-list">
       <div class="tab-item" v-for="item in tabList" :key="item">{{item}}</div>
@@ -69,9 +101,54 @@ export default {
         </div>
       </div>
     </div>
+    <div :class="{'cancel-btn': true,' hidden-btn':true,'leftShow': isLeftShow}">
+      <img src="@/assets/imgs/home-4-dele.png" alt="">
+    </div>
+    <div :class="{'confirm-btn': true,' hidden-btn':true, 'rightShow': isRightShow}">
+      <img src="@/assets/imgs/home-4-right.png" alt="">
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
+.content-box {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  .hidden-btn {
+    position: absolute;
+    bottom: 20px;
+    width: 80px;
+    height: 100px;
+    opacity: .9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s ease;
+  }
+  .cancel-btn {
+    background-color: #F05C5C;
+    left: -80px;
+    border-radius: 0 16px 16px 0;
+    img {
+      width: 34px;
+    }
+  }
+  .confirm-btn {
+    background-color: #39D98A;
+    right: -80px;
+    border-radius: 16px 0 0 16px;
+    img {
+      width: 42px;
+    }
+  }
+  .leftShow {
+    left: 0;
+  }
+  .rightShow {
+    right: 0;
+  }
+}
 .top-arrow {
   width: 37px;
   margin: 0 auto;
@@ -102,9 +179,6 @@ export default {
     display: flex;
     padding: 20px;
     box-sizing: border-box;
-    background: url('../../../assets/imgs/home-1-bg.png') no-repeat center;
-    background-size: cover;
-    border-radius: 16px;
     .left {
       img {
         width: 45px;
@@ -261,4 +335,5 @@ export default {
     }
   }
 }
+
 </style>
