@@ -1,5 +1,5 @@
 <script>
-import { reactive, ref, toRefs } from 'vue';
+import { onMounted, reactive, ref, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 export default {
    setup(props, { emit }){
@@ -8,6 +8,7 @@ export default {
     const next = (values) => {
     };
     const tabList = ['Design', 'Network', 'Brand'];
+    const maxList = ref(['a', 'b', 'c', 'd']);
     const activeTab = ref(1);
     const themeVars = {
       tabFontSize: '35px',
@@ -27,6 +28,11 @@ export default {
           isRightShow.value = true;
           isLeftShow.value = false;
           break;
+        case 'bottom':
+          let first = maxList.value[0];
+          maxList.value.shift();
+          maxList.value.push(first);
+          break;
         default:
           break;
       }
@@ -41,7 +47,17 @@ export default {
     }
     const isLeftShow = ref(false);
     const isRightShow = ref(false);
-
+    onMounted(() => {
+      let doms = document.getElementsByClassName('swipe-item')
+      console.log(doms)
+      console.log(Array.isArray(doms))
+      Array.prototype.forEach.call(doms, (dom, index) => {
+        // 最后一张位置不动, 缩放最小
+        dom.style.transform = `scale(${1 - index*0.1}) translateY(${20*(doms.length - 1 - index)}px)`
+        dom.style.transformOrigin = 'center top'
+        dom.style.zIndex = doms.length - index;
+      })
+    })
     return {
       themeVars,
       next,
@@ -50,7 +66,8 @@ export default {
       tap,
       activeTab,
       isLeftShow,
-      isRightShow
+      isRightShow,
+      maxList
     };
   }
 }
@@ -64,7 +81,9 @@ export default {
     </div>
     <div class="jobs">58 jobs</div>
     <div class="swipe">
-      <div class="swipe-item">
+      <div
+        class="swipe-item"
+        v-for="item in maxList" :key="item">
         <div class="card">
           <div class="left"><img src="@/assets/imgs/wangyi.png" alt=""></div>
           <div class="right">
@@ -152,7 +171,7 @@ export default {
 .top-arrow {
   width: 37px;
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 .swipe {
   position: relative;
@@ -163,16 +182,18 @@ export default {
 .jobs {
   text-align: center;
   color: #4380e2;
-  padding-bottom: 35px;
+  padding-bottom: 25px;
 }
 .swipe-item {
   position: absolute;
   width: 85%;
-  height: 372px;
+  height: 360px;
   background:url('../../assets/imgs/home-2-bg.png') no-repeat center;
   background-size: cover;
   border-radius: 18px;
   overflow: hidden;
+  box-shadow: 2px -2px 6px #3762cc;
+  transition: all 1s;
   .card {
     height: 150px;
     margin: 0 auto;
@@ -312,7 +333,7 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-top: 25px;
+  padding-top: 20px;
   .tab-item {
     text-align: center;
     font-size: 35px;
