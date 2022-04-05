@@ -6,6 +6,7 @@ export default {
     const router = useRouter();
     // 下一页
     const next = (values) => {
+      router.push('/maxDetail')
     };
     const tabList = ['Design', 'Network', 'Brand'];
     const maxList = ref(['a', 'b', 'c', 'd']);
@@ -84,7 +85,7 @@ export default {
       <div
         class="swipe-item"
         v-for="item in maxList" :key="item">
-        <div class="card">
+        <div class="swipe-card">
           <div class="left"><img src="@/assets/imgs/wangyi.png" alt=""></div>
           <div class="right">
             <div class="one">Radio Poresenter <span class="price">6-8k</span></div>
@@ -93,7 +94,7 @@ export default {
               <span>Nanjing</span>
             </div>
             <div class="button">
-              <div class="button1">Discover More</div>
+              <div class="button1" @click="next">Discover More</div>
               <div class="button2"><img src="@/assets/imgs/message.png" alt=""></div>
             </div>
           </div>
@@ -194,7 +195,7 @@ export default {
   overflow: hidden;
   box-shadow: 2px -2px 6px #3762cc;
   transition: all 1s;
-  .card {
+  .swipe-card {
     height: 150px;
     margin: 0 auto;
     display: flex;

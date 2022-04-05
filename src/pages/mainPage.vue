@@ -27,7 +27,10 @@ export default {
       }
     }
     onMounted(() => {
-      console.log(route.name)
+      if (route.name === 'main-maxview') {
+        isMax.value = true;
+        currentTab.value = -1;
+      } 
     })
     watch(
       () => route.name,
@@ -107,6 +110,7 @@ export default {
     background: #3762cc;
     display: flex;
     align-items: stretch;
+    z-index: 999;
     .tab {
       flex: 1;
       text-align: center;
@@ -121,6 +125,7 @@ export default {
     z-index: 1;
     transition: all .5s;
     transform-origin:center;
+    z-index: 99;
 
   }
   .middle-s {
