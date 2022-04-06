@@ -3,7 +3,7 @@ import AMapLoader from '@amap/amap-jsapi-loader';
 
 const KEY = '2ba03a8b43305c0bb8e33c4a9941b2f0';
 
-export default function useInitMap({ domId, center = [116.307484, 39.98412] }) {
+export default function useInitMap({ domId, center = [116.307484, 39.98412] }, callback) {
   let map = reactive({
     dom: null,
     instance: null,
@@ -23,6 +23,7 @@ export default function useInitMap({ domId, center = [116.307484, 39.98412] }) {
           center: center, // 中心点坐标
           zoom: 11, // 缩放级别
         });
+        callback && callback(map.instance)
       })
       .catch((e) => {
         console.log(e);

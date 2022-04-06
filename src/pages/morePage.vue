@@ -1,11 +1,15 @@
 <script>
 import { reactive, ref, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
+import useInitMap from '@/plugin/useInitMap';
 
 
 export default {
   setup(props, { emit }){
     const router = useRouter();
+    useInitMap({ domId: 'more-map', center: [116.39, 39.9] }, (map) => {
+      map.setMapStyle('amap://styles/whitesmoke');
+    });
     // 返回
     const prev = () => {
       router.go(-1);
@@ -41,7 +45,7 @@ export default {
           <span class="text last">Brooklyn NO 6 Plaza</span>
         </div>
       </div>
-      <div class="map"></div>
+      <div class="map" id="more-map"></div>
     </div>
   </div>
 </template>
