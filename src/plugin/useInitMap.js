@@ -15,7 +15,7 @@ export default function useInitMap({ domId, center = [116.307484, 39.98412] }) {
 
     AMapLoader.load({
       key: KEY,
-      version: '2.0', //
+      version: '2.0', //2.0版本地图不显示
       plugins: [], // 插件列表，如比例尺'AMap.Scale'
     })
       .then((AMap) => {

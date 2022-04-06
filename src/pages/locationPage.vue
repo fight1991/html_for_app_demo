@@ -5,7 +5,7 @@ import useInitMap from '@/plugin/useInitMap';
 export default {
   setup(props, { emit }){
     const router = useRouter();
-    let { map } = useInitMap({ domId: 'gaode-map', center: [39.98412, 116.307484] });
+    let { map } = useInitMap({ domId: 'gaode-map', center: [116.39, 39.9] });
     // 下一页
     const next = (values) => {
       router.push('/account')

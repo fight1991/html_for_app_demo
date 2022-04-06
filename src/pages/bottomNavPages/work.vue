@@ -2,11 +2,12 @@
 import { reactive, ref, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 import CardItem from './components/cardItem.vue';
-
+import LittleMap from './components/littleMap.vue';
 
 export default {
   components: {
-    CardItem
+    CardItem,
+    LittleMap
   },
   setup(props, { emit }){
     const router = useRouter();
@@ -49,7 +50,7 @@ export default {
       <div class="one">NetEase</div>
       <div class="two">Radio Presenter training</div>
       <div class="little-map">
-        <div class="left"></div>
+        <div class="left"><LittleMap :id="'littlemap' + index"/></div>
         <div class="right">
           <div class="line">
             <img src="@/assets/imgs/Calendar.png" alt="">
