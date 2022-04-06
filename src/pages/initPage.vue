@@ -27,11 +27,15 @@ export default {
   <van-image
     width="100vw"
     height="100vh"
-    fit="contain"
+    fit="fill"
+    position="bottom"
     :src="bgImg"
   />
 </div>
 </template>
 <style lang="less" scoped>
-
+  .box {
+    width: 100%;
+    height: 100%;
+  }
 </style>
